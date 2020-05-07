@@ -1,7 +1,7 @@
 # Sample app - Movie Rating Predictor and Classifier
 
 An example web application showing how to use DataRobot to classify movie ratings by audiences.
-Demo: https://movie-rating-classifier.now.sh/
+Demo: https://movie-rating-app.now.sh/
 
 The app lets you rate the movie and uses ML to clasify your rating in either positive or negative - Rotten Tomatoes style. <br/>
 It uses DataRobot to create the ML model, deploy it, and expose it as a prediction API, and the movie database from RapidAPI to get movie details. <br/>
