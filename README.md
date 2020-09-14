@@ -7,32 +7,29 @@ The app lets you rate the movie and uses ML to clasify your rating in either pos
 It uses DataRobot to create the ML model, deploy it, and expose it as a prediction API, and the movie database from RapidAPI to get movie details. <br/>
 The movies you can rate are taken from IMDB's top 250 movies of all time.
 
+There is also a corresponding tutorial available on [DataRobot developer portal](https://api-docs.datarobot.com/docs/tutorial-movie-review-classifier).
+
 ## Usage
 
 ### Requirements 
 
 - You will need a [DataRobot](datarobot.com) account and access to deployments. You can apply for a DataRobot trial account using this link: https://www.datarobot.com/lp/trial/.
 
-- You will also need a [RapidAPI](rapidapi.com) account and subscribe to the [Movie Database (IMDB Alternative) API](https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative)
-
-- To deploy, you can use the free [Vercel Now](https://vercel.com/now).
+- To deploy, you can use the free [Vercel service](https://vercel.com).
 
 ### Usage
 
 - Train the model in DataRobot using `resource/labeledTrainData.tsv`, and deploy the trained model.
-- To run locally, create a file `movie-rating-classifier/.env` and populate it with the following environment variables, replacing `YOUR_...` values for the actual values.
-- Run `now dev`
+- To run locally, create a file `movie-rating-classifier/.env` and populate it with the following environment variables, replacing `YOUR_...` values with the actual values:
 
 ```sh
-MOVIE_DB_KEY=YOUR_MOVIE_DB_KEY
-DATAROBOT_PREDICTION_SERVER=YOU_DATAROBOT_PREDICTION_SERVER
+DATAROBOT_URL="https://YOUR_DATAROBOT_URL"
 DATAROBOT_DEPLOYMENT_ID=YOUR_DATAROBOT_DEPLOYMENT_ID
 DATAROBOT_API_KEY=YOUR_DATAROBOT_API_KEY
-DATAROBOT_KEY=YOUR_DATAROBOT_KEY
 ```
 
-- To deploy directly, populate `movie-rating-classifier/now.json` `env` field with your actual keys, deployment ID, and server hostname.
-- Run `now`
+- Run `vercel dev` (you might have to set up the project in Vercel first)
+- To deploy to Vercel, run `vercel` and follow the on-screen instructions
 
 ## Repository Contents
 

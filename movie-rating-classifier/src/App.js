@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { Container, Form, Button, Image } from 'react-bootstrap';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import {getNextMovie, predictMovieScore } from './Api'
+import { predictMovieScore } from './Api'
 import ReviewModal from './components/ReviewModal';
+import movies from './utils/movies'
 
 function App() {
 
+  const getRandomMovie = () => movies[Math.floor(Math.random() * movies.length)]
   const [review, setReview] = useState("")
-  const [movie, setMovie] = useState({
-    poster: "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-    title: "The Shawshank Redemption",
-    year: "1994"
-  })
+  const [movie, setMovie] = useState(getRandomMovie())
+
   const [predictionScore, setPredictionScore] = useState("")
   let reviewInput = React.createRef();
 
-  const nextMovie = async () => {
-    console.log("Next movie")
-
-    let newMovie = await getNextMovie()
-    console.log(newMovie)
+  const nextMovie = () => {
+    let newMovie = getRandomMovie()
     setMovie(newMovie) 
   }
+
+  console.log(movie)
 
   const submitReview =  async () => {
     console.log("Form submitted!")
@@ -61,10 +59,10 @@ function App() {
       <Container className="mw-auto my-2" style={{width: '40rem'}}>
 
         <div className="text-center my-4">
-          <Image style={{width: '30rem'}} variant="top" src={movie.poster} />
+          <Image style={{width: '30rem'}} variant="top" src={movie.Poster} />
         </div>
         
-        <h2>{`${movie.title} (${movie.year})`}</h2>
+        <h2>{`${movie.Title} (${movie.Year})`}</h2>
         
         <Form>
           <Form.Group controlId="writeReview">
